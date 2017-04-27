@@ -179,8 +179,23 @@ void CMFCApplication1Dlg::OnBnClickedButton1()
 	if (aSocket.Connect(strIP, nPort))
 	{
 		char szRecValue[1024] = { 0 };
-		aSocket.Send(strText, strText.GetLength()); //发送内容给服务器  
+		//aSocket.Send(strText, strText.GetLength()); //发送内容给服务器  
 		aSocket.Receive((void *)szRecValue, 1024); //接收服务器发送回来的内容(该方法会阻塞, 在此等待有内容接收到才继续向下执行)  
+		/*WCHAR c;
+		c = szBinaryVal;*/
+		wchar_t* wBuf = L"測試";
+		CString str = szBinaryVal;
+		
+
+		// Convert to a wchar_t*
+		size_t origsize = strlen(szBinaryVal) + 1;
+		const size_t newsize = 100;
+		size_t convertedChars = 0;
+		wchar_t wcstring[newsize];
+		mbstowcs_s(&convertedChars, wcstring, origsize, szBinaryVal, _TRUNCATE);
+		//wcscat_s(wcstring, L" (wchar_t *)");
+
+		TRACE(wcstring);
 		AfxMessageBox(szRecValue);
 	}
 	else

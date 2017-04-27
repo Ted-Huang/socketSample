@@ -37,7 +37,7 @@ namespace WindowsFormsApplication1
         private void Listen()
         {
             // 設定聽取的 Port
-            myTcpListener = new TcpListener(IPAddress.Parse("192.168.103.86"), Int32.Parse("9999"));
+            myTcpListener = new TcpListener(IPAddress.Parse("192.168.1.103"), Int32.Parse("9999"));
             String strGUID = "";
             Boolean isGUID = false;
             //BKWClientListen.ReportProgress(0);

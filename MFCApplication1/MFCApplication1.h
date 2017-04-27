@@ -1,5 +1,5 @@
 
-// MFCApplication5.h : PROJECT_NAME 應用程式的主要標頭檔
+// MFCApplication1.h : PROJECT_NAME 應用程式的主要標頭檔
 //
 
 #pragma once
@@ -11,14 +11,14 @@
 #include "resource.h"		// 主要符號
 
 
-// CMFCApplication5App: 
-// 請參閱實作此類別的 MFCApplication5.cpp
+// CMFCApplication1App: 
+// 請參閱實作此類別的 MFCApplication1.cpp
 //
 
-class CMFCApplication5App : public CWinApp
+class CMFCApplication1App : public CWinApp
 {
 public:
-	CMFCApplication5App();
+	CMFCApplication1App();
 
 // 覆寫
 public:
@@ -29,4 +29,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CMFCApplication5App theApp;
+extern CMFCApplication1App theApp;

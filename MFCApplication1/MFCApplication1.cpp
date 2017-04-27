@@ -1,26 +1,26 @@
 
-// MFCApplication5.cpp : 定義應用程式的類別行為。
+// MFCApplication1.cpp : 定義應用程式的類別行為。
 //
 
 #include "stdafx.h"
-#include "MFCApplication5.h"
-#include "MFCApplication5Dlg.h"
+#include "MFCApplication1.h"
+#include "MFCApplication1Dlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CMFCApplication5App
+// CMFCApplication1App
 
-BEGIN_MESSAGE_MAP(CMFCApplication5App, CWinApp)
+BEGIN_MESSAGE_MAP(CMFCApplication1App, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CMFCApplication5App 建構
+// CMFCApplication1App 建構
 
-CMFCApplication5App::CMFCApplication5App()
+CMFCApplication1App::CMFCApplication1App()
 {
 	// 支援重新啟動管理員
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;
@@ -30,14 +30,14 @@ CMFCApplication5App::CMFCApplication5App()
 }
 
 
-// 僅有的一個 CMFCApplication5App 物件
+// 僅有的一個 CMFCApplication1App 物件
 
-CMFCApplication5App theApp;
+CMFCApplication1App theApp;
 
 
-// CMFCApplication5App 初始設定
+// CMFCApplication1App 初始設定
 
-BOOL CMFCApplication5App::InitInstance()
+BOOL CMFCApplication1App::InitInstance()
 {
 	// 假如應用程式資訊清單指定使用 ComCtl32.dll 6 (含) 以後版本，
 	// 來啟動視覺化樣式，在 Windows XP 上，則需要 InitCommonControls()。
@@ -50,6 +50,12 @@ BOOL CMFCApplication5App::InitInstance()
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
+
+	if (!AfxSocketInit())
+	{
+		AfxMessageBox(IDP_SOCKETS_INIT_FAILED);
+		return FALSE;
+	}
 
 
 	AfxEnableControlContainer();
@@ -70,7 +76,7 @@ BOOL CMFCApplication5App::InitInstance()
 	// (例如，公司名稱或組織名稱)
 	SetRegistryKey(_T("本機 AppWizard 所產生的應用程式"));
 
-	CMFCApplication5Dlg dlg;
+	CMFCApplication1Dlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
@@ -94,6 +100,10 @@ BOOL CMFCApplication5App::InitInstance()
 	{
 		delete pShellManager;
 	}
+
+#ifndef _AFXDLL
+	ControlBarCleanUp();
+#endif
 
 	// 因為已經關閉對話方塊，傳回 FALSE，所以我們會結束應用程式，
 	// 而非提示開始應用程式的訊息。

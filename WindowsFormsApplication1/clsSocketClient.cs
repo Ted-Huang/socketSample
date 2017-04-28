@@ -65,7 +65,7 @@ namespace WindowsFormsApplication1
                     {
                         if (m_isALVCK.Equals(true))
                         {
-                            String strWrite = "一般!";
+                            String strWrite = "08TFE10   201704280000000100100264000983925704F12000    9839257     SLR TXFE7     S 010426000                     0001000020170502085737   5        TC3N0384                   0001                                              00104260000            一般Test!                                            00000000P";
                             Byte[] myByte = Encoding.GetEncoding("Big5").GetBytes(strWrite);
                             myNetworkStream.Write(myByte, 0, myByte.Length);
                             dtOld = DateTime.Now;
